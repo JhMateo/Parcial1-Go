@@ -6,13 +6,11 @@ Joshep Mateo Granada: 160004314	*/
 package main
 
 import (
+	"fmt"
 	"github.com/JhMateo/parcial1/puntos"
 )
 
 func main() {
-	//for i := 3; i <= 10; i++ {
-	//	puntos.GenerarFiguraZ(i)
-	//	puntos.GenerarFiguraMas(i)
-	//}
+	fmt.Println("#  Punto 1: ")
 	puntos.GenerarFigurasZMas()
 }

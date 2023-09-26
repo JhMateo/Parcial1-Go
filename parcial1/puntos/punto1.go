@@ -2,7 +2,6 @@ package puntos
 
 import (
 	"fmt"
-	"strconv"
 )
 
 /*	Punto 1:
@@ -32,7 +31,7 @@ func GenerarFigurasZMas() {
 }
 
 func GenerarFiguraZ(n int) {
-	matrizZ := crearMatriz(n)
+	matrizZ := crearMatrizCuadrada(n)
 
 	contadorZ := 1
 	columnaZ := n - 2
@@ -41,17 +40,17 @@ func GenerarFiguraZ(n int) {
 		if i == 0 || i == n-1 {
 			for j := 0; j < n; j++ {
 				if contadorZ < 10 {
-					matrizZ[i][j] = " " + strconv.Itoa(contadorZ)
+					matrizZ[i][j] = FormatearNumero(contadorZ)
 				} else {
-					matrizZ[i][j] = strconv.Itoa(contadorZ)
+					matrizZ[i][j] = FormatearNumero(contadorZ)
 				}
 				contadorZ++
 			}
 		} else {
 			if contadorZ < 10 {
-				matrizZ[i][columnaZ] = " " + strconv.Itoa(contadorZ)
+				matrizZ[i][columnaZ] = FormatearNumero(contadorZ)
 			} else {
-				matrizZ[i][columnaZ] = strconv.Itoa(contadorZ)
+				matrizZ[i][columnaZ] = FormatearNumero(contadorZ)
 			}
 			contadorZ++
 			columnaZ--
@@ -63,7 +62,7 @@ func GenerarFiguraZ(n int) {
 }
 
 func GenerarFiguraMas(n int) {
-	matrizMas := crearMatriz(n)
+	matrizMas := crearMatrizCuadrada(n)
 
 	contadorMas := 1
 	var filaColumnaMas int = n / 2
@@ -72,17 +71,17 @@ func GenerarFiguraMas(n int) {
 		if i == filaColumnaMas {
 			for j := 0; j < n; j++ {
 				if contadorMas < 10 {
-					matrizMas[i][j] = " " + strconv.Itoa(contadorMas)
+					matrizMas[i][j] = FormatearNumero(contadorMas)
 				} else {
-					matrizMas[i][j] = strconv.Itoa(contadorMas)
+					matrizMas[i][j] = FormatearNumero(contadorMas)
 				}
 				contadorMas++
 			}
 		} else {
 			if contadorMas < 10 {
-				matrizMas[i][filaColumnaMas] = " " + strconv.Itoa(contadorMas)
+				matrizMas[i][filaColumnaMas] = FormatearNumero(contadorMas)
 			} else {
-				matrizMas[i][filaColumnaMas] = strconv.Itoa(contadorMas)
+				matrizMas[i][filaColumnaMas] = FormatearNumero(contadorMas)
 			}
 			contadorMas++
 		}
@@ -92,7 +91,7 @@ func GenerarFiguraMas(n int) {
 	ImprimirMatriz(matrizMas, n)
 }
 
-func crearMatriz(n int) [][]string {
+func crearMatrizCuadrada(n int) [][]string {
 	matriz := make([][]string, n)
 
 	// Inicializar la matriz con campos vacíos
@@ -115,4 +114,11 @@ func ImprimirMatriz(matriz [][]string, n int) {
 		fmt.Println()
 	}
 	fmt.Println()
+}
+
+func FormatearNumero(numero int) string {
+	if numero < 10 {
+		return fmt.Sprintf(" %d", numero)
+	}
+	return fmt.Sprintf("%d", numero)
 }
