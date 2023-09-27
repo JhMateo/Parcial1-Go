@@ -58,7 +58,7 @@ func GenerarFiguraZ(n int) {
 	}
 
 	fmt.Println("> Figura Z")
-	ImprimirMatriz(matrizZ, n)
+	ImprimirMatriz(matrizZ, n, n)
 }
 
 func GenerarFiguraMas(n int) {
@@ -88,7 +88,7 @@ func GenerarFiguraMas(n int) {
 	}
 
 	fmt.Println("> Figura +")
-	ImprimirMatriz(matrizMas, n)
+	ImprimirMatriz(matrizMas, n, n)
 }
 
 func crearMatrizCuadrada(n int) [][]string {
@@ -105,10 +105,11 @@ func crearMatrizCuadrada(n int) [][]string {
 	return matriz
 }
 
-func ImprimirMatriz(matriz [][]string, n int) {
-	fmt.Printf("Matriz de tamaño %v*%v: \n", n, n)
+func ImprimirMatriz(matriz [][]string, n int, m int) {
+	fmt.Printf("Matriz de tamaño %v*%v: \n", n, m)
+
 	for i := 0; i < n; i++ {
-		for j := 0; j < n; j++ {
+		for j := 0; j < m; j++ {
 			fmt.Printf("%v ", matriz[i][j])
 		}
 		fmt.Println()

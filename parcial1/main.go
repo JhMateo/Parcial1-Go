@@ -13,4 +13,7 @@ import (
 func main() {
 	fmt.Println("#  Punto 1: ")
 	puntos.GenerarFigurasZMas()
+
+	fmt.Println("\n#  Punto 2: ")
+	puntos.GenerarMatrizCaracol()
 }
