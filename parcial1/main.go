@@ -16,4 +16,7 @@ func main() {
 
 	fmt.Println("\n#  Punto 2: ")
 	puntos.GenerarMatrizCaracol()
+
+	fmt.Println("\n#  Punto 3: ")
+	puntos.DibujarTexto()
 }
