@@ -351,20 +351,38 @@ func DibujarTexto() {
 	var texto string
 	var t int
 	var n int
-	fmt.Print("Ingrese un texto: ")
-	_, err := fmt.Scan(&texto)
-	if err != nil {
-		return
+
+	// Validación del texto
+	for {
+		fmt.Print("Ingrese un texto: ")
+		_, err := fmt.Scan(&texto)
+		if err != nil {
+			fmt.Println("Error al leer el texto. Inténtelo de nuevo.")
+			continue
+		}
+		break
 	}
-	fmt.Print("Ingrese el tiempo de retraso en segundos: ")
-	_, err = fmt.Scan(&t)
-	if err != nil {
-		return
+
+	// Validación del tiempo de retraso
+	for {
+		fmt.Print("Ingrese el tiempo de retraso en segundos: ")
+		_, err := fmt.Scan(&t)
+		if err != nil || t <= 0 {
+			fmt.Println("Tiempo de retraso inválido. Debe ser un número positivo mayor que cero.")
+			continue
+		}
+		break
 	}
-	fmt.Print("Ingrese el tamaño de fuente (número impar y mayor a 5): ")
-	_, err = fmt.Scan(&n)
-	if err != nil {
-		return
+
+	// Validación del tamaño de fuente
+	for {
+		fmt.Print("Ingrese el tamaño de fuente (número impar y mayor o igual a 5): ")
+		_, err := fmt.Scan(&n)
+		if err != nil || n < 5 || n%2 == 0 {
+			fmt.Println("Tamaño de fuente inválido. Debe ser un número impar y mayor o igual a 5.")
+			continue
+		}
+		break
 	}
 
 	// Convierte la cadena a mayúsculas

@@ -34,26 +34,16 @@ func GenerarFiguraZ(n int) {
 	matrizZ := crearMatrizCuadrada(n)
 
 	contadorZ := 1
-	columnaZ := n - 2
 
 	for i := 0; i < n; i++ {
 		if i == 0 || i == n-1 {
 			for j := 0; j < n; j++ {
-				if contadorZ < 10 {
-					matrizZ[i][j] = FormatearNumero(contadorZ)
-				} else {
-					matrizZ[i][j] = FormatearNumero(contadorZ)
-				}
+				matrizZ[i][j] = FormatearNumero(contadorZ)
 				contadorZ++
 			}
 		} else {
-			if contadorZ < 10 {
-				matrizZ[i][columnaZ] = FormatearNumero(contadorZ)
-			} else {
-				matrizZ[i][columnaZ] = FormatearNumero(contadorZ)
-			}
+			matrizZ[i][n-i-1] = FormatearNumero(contadorZ)
 			contadorZ++
-			columnaZ--
 		}
 	}
 
@@ -65,24 +55,16 @@ func GenerarFiguraMas(n int) {
 	matrizMas := crearMatrizCuadrada(n)
 
 	contadorMas := 1
-	var filaColumnaMas int = n / 2
+	filaColumnaMas := n / 2
 
 	for i := 0; i < n; i++ {
 		if i == filaColumnaMas {
 			for j := 0; j < n; j++ {
-				if contadorMas < 10 {
-					matrizMas[i][j] = FormatearNumero(contadorMas)
-				} else {
-					matrizMas[i][j] = FormatearNumero(contadorMas)
-				}
+				matrizMas[i][j] = FormatearNumero(contadorMas)
 				contadorMas++
 			}
 		} else {
-			if contadorMas < 10 {
-				matrizMas[i][filaColumnaMas] = FormatearNumero(contadorMas)
-			} else {
-				matrizMas[i][filaColumnaMas] = FormatearNumero(contadorMas)
-			}
+			matrizMas[i][filaColumnaMas] = FormatearNumero(contadorMas)
 			contadorMas++
 		}
 	}
