@@ -7,6 +7,17 @@ import (
 	"time"
 )
 
+/*
+DibujarTexto draws the given text using matrix representations of characters. It transforms the input text based on predefined rules,
+scales the characters to fit the specified font size, and prints the scaled characters with a specified delay between characters.
+
+Functions:
+- DibujarTexto(): Reads the text, delay, and font size from the user and draws the text.
+- transformarTexto(texto string) string: Transforms the input text using predefined rules.
+- escalarRepresentacion(repOriginal []string, n int) ([]string, error): Scales the original character representation to fit the specified font size.
+- imprimirTextoEnMatriz(text string,  retrasoSegundos time.Duration, n int): Prints the transformed and scaled text in a matrix format.
+*/
+
 var reglas = map[string]string{
 	"A":        "4",
 	"E":        "3",

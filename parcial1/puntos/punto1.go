@@ -4,11 +4,22 @@ import (
 	"fmt"
 )
 
-/*	Punto 1:
-Definir un programa que dada una matriz n*n (ambos ingresados por el
-usuario) me genere y muestre los valores formando las siguientes figuras:
-	a. “Z”
-	b. “+”	*/
+/*
+GenerarFigurasZMas generates and displays two figures, "Z" and "+", formed by the values of an n*n matrix.
+a. The "Z" figure is formed by numbers starting from 1 in the top and bottom rows, and a diagonal line connecting them.
+b. The "+" figure is formed by numbers starting from 1 in the middle row and column, horizontally and vertically.
+
+Parameters:
+- n: The size of the n*n matrix entered by the user.
+
+Functions:
+- GenerarFigurasZMas(): Reads the size of the matrix from the user and generates both "Z" and "+" figures.
+- GenerarFiguraZ(n int): Generates the "Z" figure for the given size n and prints it.
+- GenerarFiguraMas(n int): Generates the "+" figure for the given size n and prints it.
+- crearMatrizCuadrada(n int) [][]string: Creates an empty square matrix of size n*n.
+- ImprimirMatriz(matriz [][]string, n int, m int): Prints the given matrix of size n*m.
+- FormatearNumero(numero int) string: Formats the given number as a string with leading space if it is less than 10.
+*/
 
 func GenerarFigurasZMas() {
 	var n int

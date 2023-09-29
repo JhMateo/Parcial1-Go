@@ -10,6 +10,13 @@ import (
 	"github.com/JhMateo/parcial1/puntos"
 )
 
+/*
+Main function provides a menu-driven interface for the user to choose different options related to generating figures and drawing text.
+
+Functions:
+- main(): The main function that displays the menu and handles user input for various options.
+*/
+
 func main() {
 	var opcion int
 

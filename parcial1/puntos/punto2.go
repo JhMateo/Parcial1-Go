@@ -4,6 +4,20 @@ import (
 	"fmt"
 )
 
+/*
+GenerarMatrizCaracol generates and displays a spiral matrix of size n*m filled with numbers from 1 to n*m.
+The spiral starts from the top left corner and goes in a clockwise direction, filling the matrix in a spiral pattern.
+
+Parameters:
+- n: The number of rows in the matrix.
+- m: The number of columns in the matrix.
+
+Functions:
+- GenerarMatrizCaracol(): Reads the size of the matrix from the user and generates the spiral matrix.
+- GenMatrizCaracol(n int, m int): Generates the spiral matrix for the given size n and m.
+- ImprimirMatrizCaracol(matriz [][]int): Prints the given spiral matrix.
+*/
+
 func GenerarMatrizCaracol() {
 	var n, m int
 
