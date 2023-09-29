@@ -4,17 +4,6 @@ import (
 	"fmt"
 )
 
-/*	Punto 2:
-Definir un programa que dada una matriz n*m (ambos ingresados por el usuario,
-nótese que ambos pueden ser valores diferentes) me genere y muestre una matriz en
-caracol.
-	Por ejemplo:
-	 1  2  3  4  5
-	16 17 18 19  6
-	15 24 25 20  7
-	14 23 22 21  8
-	13 12 11 10  9	*/
-
 func GenerarMatrizCaracol() {
 	var n, m int
 
@@ -25,60 +14,85 @@ func GenerarMatrizCaracol() {
 		fmt.Print("Ingrese m: ")
 		_, err2 := fmt.Scan(&m)
 
-		if err != nil || err2 != nil {
-			fmt.Println("Error al leer la entrada:", err, err2)
+		if err != nil || err2 != nil || n <= 0 || m <= 0 {
+			fmt.Println("Error: Ingresa valores válidos para n y m (n y m deben ser números positivos).")
 		} else {
 			break
 		}
 	}
 
-	GenMatrizCaracol(n, m)
+	matriz := GenMatrizCaracol(n, m)
+
+	fmt.Println("> Matriz Caracol")
+	ImprimirMatrizCaracol(matriz)
 }
 
-func GenMatrizCaracol(n int, m int) {
-	matriz := make([][]string, n)
+func GenMatrizCaracol(n int, m int) [][]int {
+	matriz := make([][]int, n)
 
 	for i := range matriz {
-		matriz[i] = make([]string, m)
+		matriz[i] = make([]int, m)
 	}
 
-	filaInicio := 0
-	filaFin := n - 1
-	columnaInicio := 0
-	columnaFin := m - 1
 	contador := 1
+	direccion := "derecha"
+	fila, columna := 0, 0
 
 	for contador <= n*m {
-		for j := columnaInicio; j <= columnaFin; j++ {
-			if matriz[filaInicio][j] == "" {
-				matriz[filaInicio][j] = FormatearNumero(contador)
-				contador++
-			}
-		}
-		for i := filaInicio + 1; i <= filaFin; i++ {
-			if matriz[i][columnaFin] == "" {
-				matriz[i][columnaFin] = FormatearNumero(contador)
-				contador++
-			}
-		}
-		for j := columnaFin - 1; j >= columnaInicio; j-- {
-			if matriz[filaFin][j] == "" {
-				matriz[filaFin][j] = FormatearNumero(contador)
-				contador++
-			}
-		}
-		for i := filaFin - 1; i > filaInicio; i-- {
-			if matriz[i][columnaInicio] == "" {
-				matriz[i][columnaInicio] = FormatearNumero(contador)
-				contador++
-			}
-		}
+		matriz[fila][columna] = contador
+		contador++
 
-		filaInicio++
-		filaFin--
-		columnaInicio++
-		columnaFin--
+		switch direccion {
+		case "derecha":
+			if columna+1 < m && matriz[fila][columna+1] == 0 {
+				columna++
+			} else {
+				direccion = "abajo"
+				fila++
+			}
+		case "abajo":
+			if fila+1 < n && matriz[fila+1][columna] == 0 {
+				fila++
+			} else {
+				direccion = "izquierda"
+				columna--
+			}
+		case "izquierda":
+			if columna-1 >= 0 && matriz[fila][columna-1] == 0 {
+				columna--
+			} else {
+				direccion = "arriba"
+				fila--
+			}
+		case "arriba":
+			if fila-1 >= 0 && matriz[fila-1][columna] == 0 {
+				fila--
+			} else {
+				direccion = "derecha"
+				columna++
+			}
+		}
 	}
-	fmt.Println("> Matriz Caracol")
-	ImprimirMatriz(matriz, n, m)
+
+	return matriz
+}
+
+func ImprimirMatrizCaracol(matriz [][]int) {
+	maximo := 0
+	for _, fila := range matriz {
+		for _, valor := range fila {
+			if valor > maximo {
+				maximo = valor
+			}
+		}
+	}
+
+	width := len(fmt.Sprint(maximo))
+
+	for _, fila := range matriz {
+		for _, valor := range fila {
+			fmt.Printf("%*d ", width, valor)
+		}
+		fmt.Println()
+	}
 }
